@@ -10,7 +10,7 @@ def process(req, rsp):
     pass
 
 
-class AppTestCast(unittest.TestCase):
+class AppTestCase(unittest.TestCase):
     def test_run(self):
         a = app.App('0.0.0.0', 8080, None, None, 0, 0)
         self.assertEqual(1, a.worker_size(), msg=None)
