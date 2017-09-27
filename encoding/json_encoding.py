@@ -19,7 +19,7 @@ class JsonEncoder(encoding.Encoder):
         :returns: str
 
         """
-        json_str = json.dumps(obj)
+        json_str = json.dumps(obj).encode()
         data = struct.pack('!I', len(json_str))
         data += json_str
         return data
@@ -32,8 +32,7 @@ class JsonEncoder(encoding.Encoder):
         """
         if not self.complete(data):
             raise encoding.DataNoEnoughException
-        # header = self.__header(data)
-        return json.loads(data[self.__header_size:])
+        return json.loads(data[self.__header_size:].decode())
 
     def complete(self, data):
         """check data completed or not

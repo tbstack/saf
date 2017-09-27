@@ -18,7 +18,7 @@ class JsonEncoderTestCase(unittest.TestCase):
         self.assertIsInstance(encoder, encoding.Encoder, msg=None)
 
     def test_encode(self):
-        json_str = json.dumps(self.obj)
+        json_str = json.dumps(self.obj).encode()
         raw_data = struct.pack('!I', len(json_str))
         raw_data += json_str
         self.assertEqual(raw_data, self.data, msg=None)
